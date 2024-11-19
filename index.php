@@ -6,18 +6,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <?php require 'dbConnect.php'?>
 </head>
 <?php
-$host = 'localhost';
-$user = 'root';
-$password = '12345678';
-$dbname = 'UniversityDB';
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;", $user, $password);
-} catch (PDOException $e) {
-    print "Ошибка!: " . $e->getMessage() . '<br>';
-}
 
 function loadMenu()
 {
