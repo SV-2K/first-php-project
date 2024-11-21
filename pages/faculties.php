@@ -14,6 +14,14 @@
 session_start();
 global $pdo;
 
+$searchQuery = '';
+if (isset($_GET['search'])) {
+    $searchQuery = trim($_GET['search']);
+}
+
+$stmt = $pdo->prepare('SELECT * FROM faculties WHERE name LIKE :query OR dean_full_name LIKE :query OR phone LIKE :query');
+$stmt->execute(['query' => '%' . $searchQuery . '%']);
+
 if (isset($_POST['update_id'])) {
     $id = $_POST['update_id'];
     $name = $_POST['name'];
@@ -87,48 +95,58 @@ if (isset($_SESSION['message'])) {
 $stmt = $pdo->query('SELECT * FROM faculties');
 ?>
 <header>
-    <form method="post" action="faculties.php">
-        <button type="submit">Факультеты</button>
-    </form>
-    <form method="post" action="departments.php">
-        <button type="submit">Кафедры</button>
-    </form>
-    <form method="post" action="disciplines.php">
-        <button type="submit">Дисциплины</button>
-    </form>
-    <form method="post" action="teachers.php">
-        <button type="submit">Преподаватели</button>
-    </form>
+    <div class="top-menu">
+        <form method="post" action="faculties.php">
+            <button type="submit">Факультеты</button>
+        </form>
+        <form method="post" action="departments.php">
+            <button type="submit">Кафедры</button>
+        </form>
+        <form method="post" action="disciplines.php">
+            <button type="submit">Дисциплины</button>
+        </form>
+        <form method="post" action="teachers.php">
+            <button type="submit">Преподаватели</button>
+        </form>
+    </div>
 </header>
-<form method="post">
-    <input type="hidden" name="delete_id" id="delete_id"> <!--Невидимое поле ввода для передачи информации об id записи-->
-    <input type="hidden" name="new_recording" id="new_recording">
-    <button type="submit" id="add_button">
-        <a href="#newRecording">Добавить новую запись</a>
-    </button>
-    <button type="submit" disabled id="delete_button">
-        Удалить выбранную строку
-    </button>
-</form>
-<table>
-    <tr>
-        <th>Название факультета</th>
-        <th>ФИО декана</th>
-        <th>Номер кабинета</th>
-        <th>Номер корпуса</th>
-        <th>Телефон</th>
-    </tr>
-    <?php while ($row = $stmt->fetch()): ?>
-        <tr onclick="document.getElementById('delete_id').value='<?= $row['id'] ?>'; document.getElementById('delete_button').disabled=false;">
-            <td><?= $row['name'] ?></td>
-            <td><?= $row['dean_full_name'] ?></td>
-            <td><?= $row['room_number'] ?></td>
-            <td><?= $row['building_number'] ?></td>
-            <td><?= $row['phone'] ?></td>
-            <td><a href="#editForm<?= $row['id'] ?>">Изменить</a></td>
+<div class="main-window">
+    <div class="table-menu">
+        <form method="get" action="faculties.php">
+            <input type="text" name="search" placeholder="Введите для поиска" value="<?= $searchQuery ?>">
+            <button type="submit">Поиск</button>
+        </form>
+        <form method="post">
+            <input type="hidden" name="delete_id" id="delete_id"> <!--Невидимое поле ввода для передачи информации об id записи-->
+            <input type="hidden" name="new_recording" id="new_recording">
+            <button type="submit" id="add_button">
+                <a href="#newRecording">Добавить новую запись</a>
+            </button>
+            <button type="submit" disabled id="delete_button">
+                Удалить выбранную строку
+            </button>
+        </form>
+    </div>
+    <table>
+        <tr>
+            <th>Название факультета</th>
+            <th>ФИО декана</th>
+            <th>Номер кабинета</th>
+            <th>Номер корпуса</th>
+            <th>Телефон</th>
         </tr>
-    <?php endwhile;?>
-</table>
+        <?php while ($row = $stmt->fetch()): ?>
+            <tr onclick="document.getElementById('delete_id').value='<?= $row['id'] ?>'; document.getElementById('delete_button').disabled=false;">
+                <td><?= $row['name'] ?></td>
+                <td><?= $row['dean_full_name'] ?></td>
+                <td><?= $row['room_number'] ?></td>
+                <td><?= $row['building_number'] ?></td>
+                <td><?= $row['phone'] ?></td>
+                <td><a href="#editForm<?= $row['id'] ?>">Изменить</a></td>
+            </tr>
+        <?php endwhile;?>
+    </table>
+</div>
 <?php if (!empty($message)):?>
     <script>
         window.onload = function () {

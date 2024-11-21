@@ -1,16 +1,41 @@
 header {
-    padding: 10px;
     display: flex;
-
+    justify-content: center;
 }
-
+.top-menu {
+    background-color: lightgray;
+    display: flex;
+    gap: 10px;
+    padding: 0 10px;
+    border-radius: 0 0 10px 10px;
+}
+.top-menu button{
+    padding: 10px;
+    background-color: lightgray;
+    border: none;
+}
 #delete_button {
-    margin: 10px;
-}
 
+}
+.table-menu {
+    display: flex;
+    margin-bottom: 30px;
+    justify-content: space-between;
+}
+.main-window {
+    padding: 30px;
+    margin-top: 100px;
+    background-color: gray;
+    border-radius: 30px;
+}
+.main-window button {
+    padding: 10px;
+    border-radius: 10px;
+}
 table {
     border-collapse: collapse;
     width: 100%;
+    background-color: white;
 }
 table, th, td {
     border: 1px solid black;
@@ -51,8 +76,6 @@ tr.selected {
     text-decoration: none;
     font-size: 24px;
     position: absolute;
-    top: 10px;
-    right: 20px;
     color: #000;
 }
 
