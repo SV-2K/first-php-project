@@ -55,6 +55,27 @@ if (isset($_POST['delete_id'])) {
     exit();
 }
 
+if (isset($_POST['new_recording'])) {
+    echo 'равно' . isset($_POST['new_recording']);
+    $name = $_POST['new_name'];
+    $dean_full_name = $_POST['new_dean_name'];
+    $room_number = $_POST['new_room_number'];
+    $building_number = $_POST['new_building_number'];
+    $phone = $_POST['new_phone'];
+
+    $stmt = $pdo->prepare("INSERT INTO faculties (name, dean_full_name, room_number, building_number, phone) VALUES (:new_name, :new_dean_name, :new_room_number, :new_building_number, :new_phone)");
+    $stmt->execute([
+        'new_name' => $name,
+        'new_dean_name' => $dean_full_name,
+        'new_room_number' => $room_number,
+        'new_building_number' => $building_number,
+        'new_phone' => $phone
+    ]);
+
+    $_SESSION['message'] = "Добавлен факультет $name.";
+    header("Location: faculties.php"); // Перезагрузка страницы
+    exit();
+}
 
 #хз как это работает, но нужно оно для того, чтобы алерт не выводился каждый раз при обновлении страницы
 $message = '';
@@ -81,7 +102,10 @@ $stmt = $pdo->query('SELECT * FROM faculties');
 </header>
 <form method="post">
     <input type="hidden" name="delete_id" id="delete_id"> <!--Невидимое поле ввода для передачи информации об id записи-->
-    <input type="hidden" name="update_recording" id="update_recording">
+    <input type="hidden" name="new_recording" id="new_recording">
+    <button type="submit" id="add_button">
+        <a href="#newRecording">Добавить новую запись</a>
+    </button>
     <button type="submit" disabled id="delete_button">
         Удалить выбранную строку
     </button>
@@ -131,22 +155,22 @@ while($row = $stmt->fetch()):
                 <br>
                 <label>
                     ФИО декана:
-                    <input type="text" name="dean_full_name" value="<?= htmlspecialchars($row['dean_full_name']) ?>">
+                    <input type="text" name="dean_full_name" value="<?= htmlspecialchars($row['dean_full_name']) ?>" required>
                 </label>
                 <br>
                 <label>
                     Номер кабинета:
-                    <input type="text" name="room_number" value="<?= htmlspecialchars($row['room_number']) ?>">
+                    <input type="text" name="room_number" value="<?= htmlspecialchars($row['room_number']) ?>" required>
                 </label>
                 <br>
                 <label>
                     Номер корпуса:
-                    <input type="text" name="building_number" value="<?= htmlspecialchars($row['building_number']) ?>">
+                    <input type="text" name="building_number" value="<?= htmlspecialchars($row['building_number']) ?>" required>
                 </label>
                 <br>
                 <label>
                     Телефон:
-                    <input type="text" name="phone" value="<?= htmlspecialchars($row['phone']) ?>">
+                    <input type="text" name="phone" value="<?= htmlspecialchars($row['phone']) ?>" pattern="[0-9\-]+" required>
                 </label>
                 <br>
                 <button type="submit">Сохранить</button>
@@ -154,5 +178,40 @@ while($row = $stmt->fetch()):
         </div>
     </div>
 <?php endwhile;?>
+<div id="newRecording" class="modal">
+    <div class="modal-content">
+        <a href="#" class="close">&times;</a>
+        <h2>Добавление нового факультета</h2>
+        <form method="post">
+            <input type="hidden" name="new_recording" value="gcfgxfxjgdj">
+            <label>
+                Название факультета:
+                <input type="text" name="new_name" required>
+            </label>
+            <br>
+            <label>
+                ФИО декана:
+                <input type="text" name="new_dean_name" required>
+            </label>
+            <br>
+            <label>
+                Номер кабинета:
+                <input type="text" name="new_room_number" required>
+            </label>
+            <br>
+            <label>
+                Номер корпуса:
+                <input type="text" name="new_building_number" required>
+            </label>
+            <br>
+            <label>
+                Телефон:
+                <input type="text" name="new_phone" pattern="[0-9\-]+" required>
+            </label>
+            <br>
+            <button type="submit">Сохранить</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>
