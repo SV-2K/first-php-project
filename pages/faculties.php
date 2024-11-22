@@ -7,12 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <?php require '../dbConnect.php' ?>
-    <link href="../styles.css" rel="stylesheet">
+    <link href="../styles/pagesStyles.css" rel="stylesheet">
 </head>
 <body>
 <?php
 session_start();
 global $pdo;
+
+#Проверка, вошел ли пользователь в аккаунт
+if (!isset($_SESSION['username'])) {
+    header('Location: ../index.php');
+    exit;
+}
 
 $searchQuery = '';
 if (isset($_GET['search'])) {
@@ -147,6 +153,7 @@ $stmt = $pdo->query('SELECT * FROM faculties');
         <?php endwhile;?>
     </table>
 </div>
+<a href="../logout.php">Выйти</a>
 <?php if (!empty($message)):?>
     <script>
         window.onload = function () {
