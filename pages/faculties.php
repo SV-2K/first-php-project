@@ -20,14 +20,6 @@ if (!isset($_SESSION['username'])) {
     exit;
 }
 
-$searchQuery = '';
-if (isset($_GET['search'])) {
-    $searchQuery = trim($_GET['search']);
-}
-
-$stmt = $pdo->prepare('SELECT * FROM faculties WHERE name LIKE :query OR dean_full_name LIKE :query OR phone LIKE :query');
-$stmt->execute(['query' => '%' . $searchQuery . '%']);
-
 if (isset($_POST['update_id'])) {
     $id = $_POST['update_id'];
     $name = $_POST['name'];
@@ -98,7 +90,14 @@ if (isset($_SESSION['message'])) {
     unset($_SESSION['message']); // Удаляем сообщение после вывода
 }
 
-$stmt = $pdo->query('SELECT * FROM faculties');
+$searchQuery = '';
+if (isset($_GET['search'])) {
+    $searchQuery = trim($_GET['search']);
+    $stmt = $pdo->prepare('SELECT * FROM faculties WHERE name LIKE :query OR dean_full_name LIKE :query OR phone LIKE :query');
+    $stmt->execute(['query' => '%' . $searchQuery . '%']);
+} else {
+    $stmt = $pdo->query('SELECT * FROM faculties');
+}
 ?>
 <header>
     <div class="top-menu">

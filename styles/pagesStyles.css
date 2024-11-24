@@ -23,8 +23,9 @@ header {
     justify-content: space-between;
 }
 .main-window {
+    width: 800px;
     padding: 30px;
-    margin-top: 100px;
+    margin: 100px auto 0 auto;
     background-color: gray;
     border-radius: 30px;
 }
