@@ -90,10 +90,11 @@ if (isset($_SESSION['message'])) {
     unset($_SESSION['message']); // Удаляем сообщение после вывода
 }
 
+#Если в строке поиска что-то есть, то таблица выводится согласно этому
 $searchQuery = '';
 if (isset($_GET['search'])) {
     $searchQuery = trim($_GET['search']);
-    $stmt = $pdo->prepare('SELECT * FROM faculties WHERE name LIKE :query OR dean_full_name LIKE :query OR phone LIKE :query');
+    $stmt = $pdo->prepare('SELECT * FROM faculties WHERE name LIKE :query OR dean_full_name LIKE :query OR phone LIKE :query OR room_number LIKE :query');
     $stmt->execute(['query' => '%' . $searchQuery . '%']);
 } else {
     $stmt = $pdo->query('SELECT * FROM faculties');

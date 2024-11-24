@@ -37,7 +37,6 @@ table {
     border-collapse: collapse;
     width: 100%;
     background-color: white;
-    border-radius: 30px;
 }
 table, th, td {
     border: 1px solid black;
