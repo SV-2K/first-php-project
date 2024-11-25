@@ -141,11 +141,14 @@ if (isset($_GET['search'])) {
         <form method="post" action="departments.php">
             <button type="submit">Кафедры</button>
         </form>
+        <form method="post" action="teachers.php">
+            <button type="submit">Преподаватели</button>
+        </form>
         <form method="post" action="disciplines.php">
             <button type="submit">Дисциплины</button>
         </form>
-        <form method="post" action="teachers.php">
-            <button type="submit">Преподаватели</button>
+        <form method="post" action="workload.php">
+            <button type="submit">Рабочая нагрузка</button>
         </form>
     </div>
 </header>
