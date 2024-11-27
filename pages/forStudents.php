@@ -47,14 +47,6 @@ if (isset($_POST['student_group']) && $_POST['student_group'] !== '--Выбер�
         'id' => $departments['faculty_id']
     ]);
     $faculties = $stmt->fetch();
-
-//    echo '<pre>';
-//    print_r($faculties);
-//    print_r($departments);
-//    print_r($teachers);
-//    print_r($disciplines);
-//    print_r($workload);
-//    echo '</pre>';
 }
 
 $stmt = $pdo->query('SELECT * FROM workload');
