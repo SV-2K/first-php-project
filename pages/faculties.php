@@ -178,27 +178,27 @@ while($row = $stmt->fetch()):
                 <input type="hidden" name="update_id" value="<?= $row['id'] ?>">
                 <label>
                     Название факультета:
-                    <input type="text" name="name" value="<?= htmlspecialchars($row['name']) ?>">
+                    <input type="text" name="name" maxlength="255" value="<?= htmlspecialchars($row['name']) ?>">
                 </label>
                 <br>
                 <label>
                     ФИО декана:
-                    <input type="text" name="dean_full_name" value="<?= htmlspecialchars($row['dean_full_name']) ?>" required>
+                    <input type="text" name="dean_full_name" maxlength="255" value="<?= htmlspecialchars($row['dean_full_name']) ?>" required>
                 </label>
                 <br>
                 <label>
                     Номер кабинета:
-                    <input type="text" name="room_number" value="<?= htmlspecialchars($row['room_number']) ?>" required>
+                    <input type="text" name="room_number" maxlength="255" value="<?= htmlspecialchars($row['room_number']) ?>" required>
                 </label>
                 <br>
                 <label>
                     Номер корпуса:
-                    <input type="text" name="building_number" value="<?= htmlspecialchars($row['building_number']) ?>" required>
+                    <input type="number" name="building_number" maxlength="255" value="<?= htmlspecialchars($row['building_number']) ?>" required>
                 </label>
                 <br>
                 <label>
                     Телефон:
-                    <input type="text" name="phone" value="<?= htmlspecialchars($row['phone']) ?>" pattern="[0-9\-]+" required>
+                    <input type="tel" name="phone" maxlength="255" value="<?= htmlspecialchars($row['phone']) ?>" pattern="[0-9\-]+" required>
                 </label>
                 <br>
                 <button type="submit">Сохранить</button>
@@ -214,27 +214,27 @@ while($row = $stmt->fetch()):
             <input type="hidden" name="new_recording" value="gcfgxfxjgdj">
             <label>
                 Название факультета:
-                <input type="text" name="new_name" required>
+                <input type="text" name="new_name" maxlength="255" required>
             </label>
             <br>
             <label>
                 ФИО декана:
-                <input type="text" name="new_dean_name" required>
+                <input type="text" name="new_dean_name" maxlength="255" required>
             </label>
             <br>
             <label>
                 Номер кабинета:
-                <input type="text" name="new_room_number" required>
+                <input type="number" name="new_room_number" maxlength="255" required>
             </label>
             <br>
             <label>
                 Номер корпуса:
-                <input type="text" name="new_building_number" required>
+                <input type="number" name="new_building_number" maxlength="255" required>
             </label>
             <br>
             <label>
                 Телефон:
-                <input type="text" name="new_phone" pattern="[0-9\-]+" required>
+                <input type="tel" name="new_phone" maxlength="255" required>
             </label>
             <br>
             <button type="submit">Сохранить</button>

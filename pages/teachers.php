@@ -251,17 +251,17 @@ while($row = $stmt->fetch()):
                 <input type="hidden" name="update_id" value="<?= $row['id'] ?>">
                 <label>
                     Имя:
-                    <input type="text" name="first_name" value="<?= htmlspecialchars($row['first_name']) ?>" required>
+                    <input type="text" name="first_name" maxlength="255" value="<?= htmlspecialchars($row['first_name']) ?>" required>
                 </label>
                 <br>
                 <label>
                     Фамилия:
-                    <input type="text" name="last_name" value="<?= htmlspecialchars($row['last_name']) ?>" required>
+                    <input type="text" name="last_name" maxlength="255" value="<?= htmlspecialchars($row['last_name']) ?>" required>
                 </label>
                 <br>
                 <label>
                     Отчество:
-                    <input type="text" name="middle_name" value="<?= htmlspecialchars($row['middle_name']) ?>" required>
+                    <input type="text" name="middle_name" maxlength="255" value="<?= htmlspecialchars($row['middle_name']) ?>" required>
                 </label>
                 <br>
                 <label>
@@ -280,32 +280,32 @@ while($row = $stmt->fetch()):
                 <br>
                 <label>
                     Год рождения:
-                    <input type="text" name="birth_year" value="<?= htmlspecialchars($row['birth_year']) ?>" required>
+                    <input type="number" name="birth_year" maxlength="255" value="<?= htmlspecialchars($row['birth_year']) ?>" required>
                 </label>
                 <br>
                 <label>
                     Год найма:
-                    <input type="text" name="hire_year" value="<?= htmlspecialchars($row['hire_year']) ?>" required>
+                    <input type="number" name="hire_year" maxlength="255" value="<?= htmlspecialchars($row['hire_year']) ?>" required>
                 </label>
                 <br>
                 <label>
                     Стаж:
-                    <input type="text" name="experience" value="<?= htmlspecialchars($row['experience']) ?>" required>
+                    <input type="number" name="experience" maxlength="255" value="<?= htmlspecialchars($row['experience']) ?>" required>
                 </label>
                 <br>
                 <label>
                     Должность:
-                    <input type="text" name="position" value="<?= htmlspecialchars($row['position']) ?>" required>
+                    <input type="text" name="position" maxlength="255" value="<?= htmlspecialchars($row['position']) ?>" required>
                 </label>
                 <br>
                 <label>
                     Пол:
-                    <input type="text" name="gender" value="<?= htmlspecialchars($row['gender']) ?>" required>
+                    <input type="text" name="gender" maxlength="255" value="<?= htmlspecialchars($row['gender']) ?>" required>
                 </label>
                 <br>
                 <label>
                     Город:
-                    <input type="text" name="city" value="<?= htmlspecialchars($row['city']) ?>" required>
+                    <input type="text" name="city" maxlength="255" value="<?= htmlspecialchars($row['city']) ?>" required>
                 </label>
                 <br>
                 <button type="submit">Сохранить</button>
@@ -322,17 +322,17 @@ while($row = $stmt->fetch()):
             <input type="hidden" name="new_recording" value="gcfgxfxjgdj">
             <label>
                 Имя:
-                <input type="text" name="new_first_name" required>
+                <input type="text" name="new_first_name" maxlength="255" required>
             </label>
             <br>
             <label>
                 Фамилия:
-                <input type="text" name="new_last_name" required>
+                <input type="text" name="new_last_name" maxlength="255" required>
             </label>
             <br>
             <label>
                 Отчество:
-                <input type="text" name="new_middle_name" required>
+                <input type="text" name="new_middle_name" maxlength="255" required>
             </label>
             <br>
             <label>
@@ -351,42 +351,42 @@ while($row = $stmt->fetch()):
             <br>
             <label>
                 Год рождения:
-                <input type="text" name="new_birth_year" required>
+                <input type="number" name="new_birth_year" maxlength="255" required>
             </label>
             <br>
             <label>
                 Год найма:
-                <input type="text" name="new_hire_year" required>
+                <input type="number" name="new_hire_year" maxlength="255" required>
             </label>
             <br>
             <label>
                 Стаж:
-                <input type="text" name="new_experience" required>
+                <input type="number" name="new_experience" maxlength="255" required>
             </label>
             <br>
             <label>
                 Должность:
-                <input type="text" name="new_position" required>
+                <input type="text" name="new_position" maxlength="255" required>
             </label>
             <br>
             <label>
                 Пол:
-                <input type="text" name="new_gender"" required>
+                <input type="text" name="new_gender" maxlength="255" required>
             </label>
             <br>
             <label>
                 Город:
-                <input type="text" name="new_city" required>
+                <input type="text" name="new_city" maxlength="255" required>
             </label>
             <br>
             <label>
                 Логин:
-                <input type="text" name="new_login" required>
+                <input type="text" name="new_login" maxlength="45" required>
             </label>
             <br>
             <label>
                 Пароль:
-                <input type="text" name="new_password" required>
+                <input type="text" name="new_password" maxlength="45" required>
             </label>
             <br>
             <button type="submit">Сохранить</button>

@@ -280,27 +280,27 @@ while($row = $stmt->fetch()):
                 <br>
                 <label>
                     Учебный год:
-                    <input type="text" name="academic_year" value="<?= htmlspecialchars($row['academic_year']) ?>" required>
+                    <input type="text" name="academic_year" maxlength="255" value="<?= htmlspecialchars($row['academic_year']) ?>" required>
                 </label>
                 <br>
                 <label>
                     Семестр:
-                    <input type="text" name="semester" value="<?= htmlspecialchars($row['semester']) ?>" required>
+                    <input type="number" name="semester" maxlength="255" value="<?= htmlspecialchars($row['semester']) ?>" required>
                 </label>
                 <br>
                 <label>
                     Группа:
-                    <input type="text" name="group_name" value="<?= htmlspecialchars($row['group_name']) ?>" required>
+                    <input type="text" name="group_name" maxlength="255" value="<?= htmlspecialchars($row['group_name']) ?>" required>
                 </label>
                 <br>
                 <label>
                     Количество студентов:
-                    <input type="text" name="student_count" value="<?= htmlspecialchars($row['student_count']) ?>" required>
+                    <input type="number" name="student_count" maxlength="255" value="<?= htmlspecialchars($row['student_count']) ?>" required>
                 </label>
                 <br>
                 <label>
                     Вид итогового контроля:
-                    <input type="text" name="final_control_type" value="<?= htmlspecialchars($row['final_control_type']) ?>" required>
+                    <input type="text" name="final_control_type" maxlength="255" value="<?= htmlspecialchars($row['final_control_type']) ?>" required>
                 </label>
                 <br>
                 <button type="submit">Сохранить</button>
@@ -344,27 +344,27 @@ while($row = $stmt->fetch()):
             <br>
             <label>
                 Учебный год:
-                <input type="text" name="new_academic_year" required>
+                <input type="text" name="new_academic_year" maxlength="255" required>
             </label>
             <br>
             <label>
                 Семестр:
-                <input type="text" name="new_semester" required>
+                <input type="number" name="new_semester" maxlength="255" required>
             </label>
             <br>
             <label>
                 Группа:
-                <input type="text" name="new_group_name" required>
+                <input type="text" name="new_group_name" maxlength="255" required>
             </label>
             <br>
             <label>
                 Количество студентов:
-                <input type="text" name="new_student_count" required>
+                <input type="number" name="new_student_count" maxlength="255" required>
             </label>
             <br>
             <label>
                 Вид итогового контроля:
-                <input type="text" name="new_final_control_type" required>
+                <input type="text" name="new_final_control_type" maxlength="255" required>
             </label>
             <br>
             <button type="submit">Сохранить</button>

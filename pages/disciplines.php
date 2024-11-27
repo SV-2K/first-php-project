@@ -119,7 +119,7 @@ if (isset($_GET['search'])) {
         <form method="post">
             <input type="hidden" name="delete_id" id="delete_id"> <!--Невидимое поле ввода для передачи информации об id записи-->
             <input type="hidden" name="new_recording" id="new_recording">
-            <button disabled">
+            <button disabled>
                 <a href="#newRecording">Добавить новую запись</a>
             </button>
             <button type="submit" disabled id="delete_button">
@@ -165,17 +165,17 @@ while($row = $stmt->fetch()):
                 <input type="hidden" name="update_id" value="<?= $row['id'] ?>">
                 <label>
                     Название:
-                    <input type="text" name="name" value="<?= htmlspecialchars($row['name']) ?>">
+                    <input type="text" name="name" maxlength="255" value="<?= htmlspecialchars($row['name']) ?>">
                 </label>
                 <br>
                 <label>
                     Количество часов:
-                    <input type="text" name="hours" value="<?= htmlspecialchars($row['hours']) ?>" required>
+                    <input type="number" name="hours" maxlength="255" value="<?= htmlspecialchars($row['hours']) ?>" required>
                 </label>
                 <br>
                 <label>
                     Цикл:
-                    <input type="text" name="cycle" value="<?= htmlspecialchars($row['cycle']) ?>" required>
+                    <input type="text" name="cycle" maxlength="255" value="<?= htmlspecialchars($row['cycle']) ?>" required>
                 </label>
                 <br>
                 <button type="submit">Сохранить</button>
@@ -191,17 +191,17 @@ while($row = $stmt->fetch()):
             <input type="hidden" name="new_recording" value="gcfgxfxjgdj">
             <label>
                 Название:
-                <input type="text" name="new_name" required>
+                <input type="text" name="new_name" maxlength="255" required>
             </label>
             <br>
             <label>
                 Количество часов:
-                <input type="text" name="new_hours" required>
+                <input type="number" name="new_hours" maxlength="255" required>
             </label>
             <br>
             <label>
                 Цикл:
-                <input type="text" name="new_cycle" required>
+                <input type="text" name="new_cycle" maxlength="255" required>
             </label>
             <br>
             <button type="submit">Сохранить</button>
