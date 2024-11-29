@@ -1,7 +1,7 @@
 <?php
 $host = 'localhost';
 $user = 'root';
-$password = '123';
+$password = '12345678';
 $dbname = 'UniversityDB';
 
 try {

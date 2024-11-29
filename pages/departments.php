@@ -248,7 +248,7 @@
                     <br>
                     <label>
                         Телефон:
-                        <input type="tel" name="phone" maxlength="255" value="<?= htmlspecialchars($row['phone']) ?>" required>
+                        <input type="text" name="phone" maxlength="255" value="<?= htmlspecialchars($row['phone']) ?>" required>
                     </label>
                     <br>
                     <label>

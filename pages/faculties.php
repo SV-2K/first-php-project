@@ -200,7 +200,7 @@
                     <br>
                     <label>
                         Телефон:
-                        <input type="tel" name="phone" maxlength="255" value="<?= htmlspecialchars($row['phone']) ?>" pattern="[0-9\-]+" required>
+                        <input type="text" name="phone" maxlength="255" value="<?= htmlspecialchars($row['phone']) ?>" pattern="[0-9\-]+" required>
                     </label>
                     <br>
                     <button class="submit-cont" type="submit">Сохранить</button>
@@ -236,7 +236,7 @@
                 <br>
                 <label>
                     Телефон:
-                    <input type="tel" name="new_phone" maxlength="255" required>
+                    <input type="text" name="new_phone" maxlength="255" required>
                 </label>
                 <br>
                 <button class="submit-cont" type="submit">Сохранить</button>
